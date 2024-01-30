@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isValidCRDBCard(const string& cardNumber) {
+    // CRDB card numbers typically start with 6011
+    return (cardNumber.length() == 16) && (cardNumber.substr(0, 4) == "6011");
+}
+
+bool isValidNMBCard(const string& cardNumber) {
+    // NMB card numbers typically start with 53 or 54
+    return (cardNumber.length() == 16) && ((cardNumber.substr(0, 2) == "53") || (cardNumber.substr(0, 2) == "54"));
+}
+
+int main() {
+    string cardNumber;
+
+    cout << "Enter your credit card number: ";
+    cin >> cardNumber;
+
+    if (isValidCRDBCard(cardNumber)) {
+        cout << "CRDB Credit card number is valid." << endl;
+    } else if (isValidNMBCard(cardNumber)) {
+        cout << "NMB Credit card number is valid." << endl;
+    } else {
+        cout << "Credit card number is invalid or not supported by this program." << endl;
+    }
+
+    return 0;
+}
